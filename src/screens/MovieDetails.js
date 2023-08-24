@@ -15,7 +15,7 @@ export default function MovieDetails() {
 
     useEffect(() => {
         async function fetchMovieDetails() {
-            const request = await axios.get(`/movie/${movieId}?api_key=10b50d713b7a846be2b04c703bed22e0&language=en-US`);
+            const request = await axios.get(`/movie/${movieId}?api_key={API_KEY}&language=en-US`);
             setMovieDetails(request.data);
         }
         fetchMovieDetails();
