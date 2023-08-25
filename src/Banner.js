@@ -3,8 +3,10 @@ import './Banner.css';
 import axios from './axios';
 import requests from './Requests';
 import YouTube from 'react-youtube';
+import { useNavigate } from 'react-router-dom';
 
 function Banner() {
+    const navigate = useNavigate();
     const [movie, setMovie] = useState([]);
     const [showVideo, setShowVideo] = useState(false);
     const [videoId, setVideoId] = useState(null);
@@ -31,7 +33,7 @@ function Banner() {
                 const response = await axios.get(
                     `https://www.googleapis.com/youtube/v3/search?q=${encodeURIComponent(
                         `${movie.title || movie.name || movie.original_name} official trailer`
-                    )}&key={API_KEY}&type=video`
+                    )}&key=AIzaSyCKA-PKo3F2C1FzmXMWvd0T2rOzgF1Kty4&type=video`
                 );
                 if (response.data.items.length > 0) {
                     const firstVideo = response.data.items[0];
@@ -71,7 +73,9 @@ function Banner() {
                     <button className="banner__button" onClick={handlePlayClick}>
                         {showVideo ? 'Pause' : 'Play'}
                     </button>
-                    <button className="banner__button">My List</button>
+                    <button className="banner__button" onClick={()=> navigate("/liked")}>
+                        My List
+                    </button>
                 </div>
                 <h1 className="banner__description">
                     {movie?.overview}

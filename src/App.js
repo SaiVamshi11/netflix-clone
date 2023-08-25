@@ -8,6 +8,7 @@ import { auth } from './firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import { login, logout, selectUser } from './features/counter/userSlice';
 import MovieDetails from './screens/MovieDetails';
+import Likedscreen from './screens/Likedscreen';
 
 function App() {
   const user = useSelector(selectUser);
@@ -43,6 +44,8 @@ function App() {
           </Route>
 
           <Route path='/profile' element={<Profilescreen/>}>
+          </Route>
+          <Route path='/liked' element={<Likedscreen/>}>
           </Route>
 
           <Route path='/movie/:movieId' element={<MovieDetails/>}>
